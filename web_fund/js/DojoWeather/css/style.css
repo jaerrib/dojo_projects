@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: white;
+    font-family: sans-serif;
+}
+
+.nav_container {
+    display: flex;
+    align-items: center;
+    background-color: #9fc5f8;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    margin: 0 auto;
+    padding: 10px;
+    width: 1000px;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+}
+
+li {
+    font-size: 1.25em;
+    font-weight: bold;
+    list-style-type: none;
+    margin-left: 55px;
+}
+
+a.city_link {
+    color: white;
+    text-decoration: none;
+    
+}
+
+/* End Nav Bar */
+
+/* End Nav Container */
+
+.main_content {
+    color: black;
+    margin: 20px auto 0;
+    width: 1000px;
+}
+
+hr {
+    margin: 20px auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+/* End Header */
+
+.daily_forecast {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    /* padding: 0; */
+}
+
+.day_card {
+    background-color: #eeeeee;
+    padding: 25px;
+}
+
+.day, .forecast {
+    text-align: center;
+}
+
+.weather_icon {
+    background-color: white;
+    border-radius: 50%;
+    margin: 20px 0;
+    width: 150px;
+}
+
+.temps {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.high {
+    color: #cf2a27;
+}
+
+.low {
+    color: #337de4;
+}
+
+#cookie_banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #eeeeee;
+    border: 1px solid #000000;
+    margin: 20px auto 0;
+    padding: 10px;
+    position: fixed;
+    width: 980px;
+}
+
+.cookie_img {
+    width: 75px;
+}
+
+.cookie_text {
+    margin: 0 20px;
+}
+
+.cookie_accept {
+    background-color: #9fc5f8;
+    font-weight: bold;
+    padding: 10px;
+    width: 100px;
+}
+
+/* End Cookie Banner */
+
+/* End Main Content */
+
+/* End Container */

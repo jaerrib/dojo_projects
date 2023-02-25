@@ -1,0 +1,36 @@
+div {
+    font-family: sans-serif;
+}
+
+h1 {
+    background-color: black;
+    color: whitesmoke;
+    margin: 5px 0px;
+    padding: 5px 10px;
+}
+
+h2 {
+    background-color: rebeccapurple;
+    color: whitesmoke;
+    font-style: italic;
+    margin: 5px 0px;
+    padding: 5px 0px;
+    text-align: center;
+    
+}
+
+h3 {
+    background-color: cyan;
+    color: black;
+    margin: 5px 0px;
+    padding: 5px 10px;
+    text-align: right;
+}
+
+a {
+    color: black;
+}
+
+span {
+    color: aqua;
+}

@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    background-color: white;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+    padding: 5px;
+    width: 950px;
+}
+
+/* Nav Bar */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: dimgray;
+    padding: 10px;
+}
+
+h1 {
+    color: white;
+    font-weight: lighter;
+}
+
+ul {
+    align-items: center;
+    display: flex;
+}
+
+li {
+    color: white;
+    list-style-type: none;
+    margin: 10px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a.active {
+    font-weight: bold;
+}
+
+button.btn {
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+    background-color: darkcyan;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+}
+
+button:active {
+    background-color: cyan;
+}

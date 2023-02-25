@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    background-color: white;
+}
+
+/* Row */
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* Column */
+.col {
+    background-color: teal;
+    color: white;
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
+}
+
+/* Column 3 */
+.col-2 {
+    background-color: teal;
+    color: white;
+    flex: 2;
+    margin: 10px;
+    padding: 10px;
+}
+
+/* Column 3 */
+.col-3 {
+    background-color: teal;
+    color: white;
+    flex: 3;
+    margin: 10px;
+    padding: 10px;
+}

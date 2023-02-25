@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    background-color: white;
+    border: 3px solid lightgray;
+    font-family: sans-serif;
+    margin: 50px auto;
+    width: 700px;
+
+}
+
+/* Header */
+.header {
+    background-color: #17a2b8;
+    height: 15px;
+    padding: 50px 20px;
+}
+
+/* Main */
+.main {
+    padding: 0px 20px;
+}
+
+/* List content*/
+ul,
+li {
+    list-style: none;
+    padding: 5px;
+}
+
+ul {
+    margin: 35px 0;
+}
+
+.inline {
+    display: flex;
+}
+
+img {
+    margin: 0 10px 0 0;
+}
+
+#userCircle {
+    border: 3px solid lightgray;
+    border-radius: 50px;
+    height: 100px;
+}
+
+.icon {
+    height: 20px;
+}
+
+a {
+    color: royalblue;
+}

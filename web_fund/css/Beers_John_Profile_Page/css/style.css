@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: white;
+    font-family: sans-serif;
+}
+
+.navBar,
+.nav-link,
+.btn,
+.card_header {
+    color: white;
+}
+
+.nav-header,
+.navBar,
+.main,
+.connection,
+.request {
+    display: flex;
+}
+
+.navBar {
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    padding: 10px 150px;
+}
+
+ul,
+li {
+    align-items: center;
+    list-style: none;
+    margin: 10px 0;
+    padding: 0 75px 0 10px;
+}
+
+.nav-link {
+    text-decoration: none;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.btn {
+    background-color: #17a2b8;
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+    font-weight: bold;
+    margin: 0 20px 0 0;
+    padding: 10px;
+}
+
+.main {
+    height: auto;
+    margin: 10px 150px;
+}
+
+.col-1,
+.col-2 {
+    margin: 20px;
+}
+
+.col-1 {
+    flex: 1;
+}
+
+.col-2 {
+    flex: 2;
+}
+
+.userCard,
+.card {
+    border: 3px solid lightgray;
+    margin: 0 0 20px 0;
+}
+
+.userCard {
+    font-family: sans-serif;
+    height: auto;
+}
+
+.userheader {
+    background-color: #17a2b8;
+    height: 30px;
+    padding: 40px 0 0 20px;
+}
+
+.userContent {
+    margin: 100px 0 15px 15px;
+}
+
+
+.city,
+.dates,
+.connectionName {
+    margin: 10px 0;
+    font-size: large;
+    font-weight: bold;
+}
+
+img {
+    margin: 5px 5px 0px 0px;
+}
+
+#userCircle {
+    border: 3px solid lightgray;
+    border-radius: 50px;
+    height: 100px;
+}
+
+.icon {
+    height: 20px;
+}
+
+.bodyLink {
+    color: #347ee7;
+}
+
+.educationContent {
+    padding: 15px;
+}
+
+.card_header {
+    background-color: #333333;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.dates {
+    color: #848484;
+}
+
+.requestCount,
+.connectionCount {
+    background-color: #cccccc;
+    color: #333333;
+    font-weight: bold;
+    height: 20px;
+    padding: 10px 14px;
+    text-align: center;
+    width: 20px;
+}
+
+.requestCount {
+    border-radius: 50px;
+}
+
+.request {
+    justify-content: space-between;
+}
+
+.request,
+.connection {
+    align-items: center;
+    padding: 5px;
+}
+
+.smallIcon {
+    border-radius: 100px;
+    height: 40px;
+}
+
+.connectionCount {
+    border-radius: 50%;
+}
+
+.viewMore {
+    border-top: 5px solid lightgray;
+    margin: 0;
+    padding: 5px 0 5px 15px;
+}

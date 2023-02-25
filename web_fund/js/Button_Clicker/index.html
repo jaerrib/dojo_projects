@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+    <title>Button Clicker</title>
+</head>
+<body>
+    <!-- Container -->
+    <div class="container">
+        <!-- Navigation Bar -->
+        <div class="navbar">
+            <p class="largetext">Dojonary</p>
+            <p class="searchbox">Search</p>
+            <button class="loginbtn" onclick="toggleStatus(this)">Login</button>
+
+        </div>
+        <!-- Main Content -->
+        <div class="maincontent">
+            <div class="col-2">
+                <div class="defcard">
+                    <div class="col-1">
+                        <ul>
+                            <li><p class="largetext">ninja</p></li>
+                            <li><p class="partofspeech">noun</p></li>
+                            <li><p">Plural: <span class="italic">ninjas</span></p></li>
+                            <li><button class="likebtn" onclick="alert('Ninja was liked')">13 likes</button></li>
+                        </ul>
+                    </div>
+                    <div class="col-2">
+                        <p class="definition">
+                            A practitioner skilled in the <a href="#">Japanese</a> art of <a href="#">ninjutsu</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="defcard">
+                    <div class="col-1">
+                        <ul>
+                            <li><p class="largetext">ninja</p></li>
+                            <li><p class="partofspeech">noun</p></li>
+                            <li><p">Plural: <span class="italic">ninjas</span></p></li>
+                            <li><button class="likebtn" onclick="alert('Ninja was liked')">37 likes</button></li>
+                        </ul>
+                    </div>
+                    <div class="col-2">
+                        <p class="definition">
+                            A <a href="">programmer</a> who breaks down problems with <a href="">zen</a>-like focus
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="card">
+                    <p>
+                        Dojonary is defined by <span class="bold">YOU</span>
+                    </p>
+                    <button class="addbtn" onclick="hide(this)">Add Definition</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Container -->
+</body>
+</html>

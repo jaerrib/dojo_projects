@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+    <title>Liking Likes</title>
+</head>
+
+<body>
+    <!-- Container -->
+    <div class="container">
+        <!-- Navigation -->
+        <p class="navigation">Network</p>
+        <!-- End Navigation -->
+        <!-- Main Section -->
+        <p class="header">Your Feed</p>
+        <div class="main_section">
+            <!-- User Card -->
+            <div class="user_card">
+                <ul>
+                    <li><img src="icons/user-circle.png" alt="user icon" class="user_icon"></li>
+                    <li><a href="#">Add an avatar</a></li>
+                    <li>
+                        <p class="name">James Doe</p>
+                    </li>
+                </ul>
+            </div>
+            <!-- End User Card -->
+            <!-- Feed List -->
+            <div class="feed_list">
+                <div class="feed_card">
+                    <div class="card_header">
+                        <p class="name">Neil M</p>
+                        <div class="likes_section">
+                            <p><span id="likes1">9</span> like(s)</p>
+                            <button class="btn" onclick="addLike1()">Like</button>
+                        </div>
+                    </div>
+                    <p class="message_text">I just set up this new discord bot, let me know what you all think. <a
+                            href="#">link</a></p>
+                </div>
+                <div class="feed_card">
+                    <div class="card_header">
+                        <p class="name">Nicole K</p>
+                        <div class="likes_section">
+                            <p><span id="likes2">12</span> like(s)</p>
+                            <button class="btn" onclick="addLike2()">Like</button>
+                        </div>
+                    </div>
+                    <p class="message_text">Just finished my <a href="#">next comic</a>, check it out.</p>
+                </div>
+                <div class="feed_card">
+                    <div class="card_header">
+                        <p class="name">Jim R</p>
+                        <div class="likes_section">
+                            <p><span id="likes3">9</span> like(s)</p>
+                            <button class="btn" onclick="addLike3()">Like</button>
+                        </div>
+                    </div>
+                    <p class="message_text">I can't stop listening to the <a href="#">new album</a>. Who else is liking
+                        it?</p>
+                </div>
+            </div>
+            <!-- End Feed List -->
+        </div>
+        <!-- End Main Section -->
+    </div>
+        <!-- End Container -->
+</body>
+
+</html>

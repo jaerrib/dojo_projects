@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+    <title>DojoWeather</title>
+</head>
+
+<body>
+    <!-- Container -->
+    <div class="container">
+        <!-- Nav Container -->
+        <div class="nav_container">
+
+            <!-- Nav Bar -->
+            <div class="navbar">
+                <h1>DojoWeather</h1>
+                <ul>
+                    <li><a href="#" class="city_link" onclick="loadReport()">Burbank</a></li>
+                    <li><a href="#" class="city_link" onclick="loadReport()">Chicago</a></li>
+                    <li><a href="#" class="city_link" onclick="loadReport()">Dallas</a></li>
+                </ul>
+            </div>
+            <!-- End Nav Bar -->
+        </div>
+        <!-- End Nav Container -->
+        <!-- Main Content -->
+        <div class="main_content">
+            <div class="header">
+                <h2 class="city_Name">San Jose</h2>
+                <div class="temperature">
+                    <label for="temp">show temperature in</label>
+                    <select name="temp" id="temp" onchange='if(this.value != 0) {recalcTemps(value); }'>
+                        <option value="C">C</option>
+                        <option value="F">F</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="daily_forecast">
+                <div class="day_card">
+                    <h3 class="day">Today</h3>
+                    <img src="img/some_rain.png" alt="some rain" class="weather_icon">
+                    <p class="forecast">some rain</p>
+                    <div class="temps">
+                        <div class="high"><span id="today_high">24</span>°</div>
+                        <div class="low"><span id="today_low">18</span>°</div>
+                    </div>
+                </div>
+                <div class="day_card">
+                    <h3 class="day">Tomorrow</h3>
+                    <img src="img/some_sun.png" alt="some sun" class="weather_icon">
+                    <p class="forecast">some sun</p>
+                    <div class="temps">
+                        <div class="high"><span id="tomorrow_high">27</span>°</div>
+                        <div class="low"><span id="tomorrow_low">19</span>°</div>
+                    </div>
+                </div>
+                <div class="day_card">
+                    <h3 class="day">Friday</h3>
+                    <img src="img/some_clouds.png" alt="some clouds" class="weather_icon">
+                    <p class="forecast">some clouds</p>
+                    <div class="temps">
+                        <div class="high"><span id="fri_high">21</span>°</div>
+                        <div class="low"><span id="fri_low">16</span>°</div>
+                    </div>
+                </div>
+                <div class="day_card">
+                    <h3 class="day">Saturday</h3>
+                    <img src="img/some_sun.png" alt="some sun" class="weather_icon">
+                    <p class="forecast">some sun</p>
+                    <div class="temps">
+                        <div class="high"><span id="sat_high">26</span>°</div>
+                        <div class="low"><span id="sat_low">21</span>°</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Cookie Banner -->
+            <div id="cookie_banner">
+                <img src="img/cookie.png" alt="cookie" class="cookie_img">
+                <div class="cookie_text">
+                    <h3>Stop! Cookie Time</h3>
+                    <p>
+                        We use cookies (sadly not the edible ones) to personalize content and ads, to provide social
+                        media features and to anaylse our traffic. <a href="#">Read more...</a>
+                    </p>
+                </div>
+                <button class="cookie_accept" onclick="hide()">I accept</button>
+            </div>
+            <!-- End Cookie Banner -->
+            <!-- End Main Content -->
+        </div>
+    </div>
+    <!-- End Container -->
+</body>
+
+</html>
