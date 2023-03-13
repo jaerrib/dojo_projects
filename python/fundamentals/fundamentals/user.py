@@ -45,7 +45,7 @@ class User():
 
 user1 = User("John", "Doe", "jdoe@domain.com", 18)
 user1.enroll()
-user2 = User("Jane", "Doe", "jane_doe@domain.com", "21")
+user2 = User("Jane", "Doe", "jane_doe@domain.com", 21)
 user3 = User("Linus", "Torvalds", "linuxguru@domain.com", 53)
 user1.spend_gold_points(50)
 user2.enroll()
