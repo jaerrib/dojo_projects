@@ -2,11 +2,10 @@
 # numbers from 1 to 1000.  You may use a modulus operator for this exercise
 
 def get_even():
-    arr = []
+    sum = 0
     for i in range(1, 1001):
         if i % 2 == 0:
-            arr.append(i)
-    return arr
-
+            sum += i
+    return sum
 
 print(get_even())
