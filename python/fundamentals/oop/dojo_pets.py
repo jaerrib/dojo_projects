@@ -8,26 +8,27 @@ class Ninja:
         self.pet_food = pet_food
         self.pet = pet
 
-        def walk(self):
-            self.pet.play()
-            return self
+    def walk(self):
+        self.pet.play()
+        return self
 
-        def feed(self):
-            if self.pet_food > 0:
-                self.pet_food -= 1
-                self.pet.eat()
-            else:
-                print("Oh no!! You need more pet food!")
-            return self
+    def feed(self):
+        if self.pet_food > 0:
+            self.pet_food -= 1
+            self.pet.eat()
+        else:
+            print("Oh no!! You need more pet food!")
+        return self
 
-        def bathe(self):
-            self.pet.noise()
-            return self
-    
+    def bathe(self):
+        self.pet.noise()
+        return self
+
     # implement the following methods:
     # walk() - walks the ninja's pet invoking the pet play() method
     # feed() - feeds the ninja's pet invoking the pet eat() method
     # bathe() - cleans the ninja's pet invoking the pet noise() method
+
 
 class Pet:
     # implement __init__( name , type , tricks ):
@@ -50,7 +51,7 @@ class Pet:
         else:
             self.energy = 100
         return self
-    
+
     def eat(self):
         if self.energy < 95:
             self.energy += 5
@@ -72,6 +73,7 @@ class Pet:
     def noise(self):
         print("Pet's sound")
 
+
 ninja = Ninja(
     "Jackie",
     "Chan",
@@ -84,5 +86,4 @@ ninja = Ninja(
 
 # ninja.feed()
 
-print(ninja.first_name, ninja.last_name, ninja.pet.name)
-ninja.walk()
+ninja.feed().walk().bathe()
