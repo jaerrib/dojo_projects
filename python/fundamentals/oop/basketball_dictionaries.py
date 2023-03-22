@@ -53,21 +53,33 @@ kyrie = {
     "team": "Brooklyn Nets"
 }
 
-# Create your Player instances here!
-# player_jason = ???
-
 
 class Player:
+
+    all_players = []
+
     def __init__(self, player_info):
         self.name = player_info["name"]
         self.age = player_info["age"]
         self.position = player_info["position"]
         self.team = player_info["team"]
+        Player.all_players.append(self)
+
+    @classmethod
+    def get_team(cls, team_list):
+        new_team = []
+        for index in range(len(team_list)):
+            new_team.append(cls(team_list[index]))
+        return new_team
 
 
 player_kevin = Player(kevin)
 player_jason = Player(jason)
 player_kyrie = Player(kyrie)
 
+# new_team = []
+# for index in range(len(players)):
+#     new_team.append(Player(players[index]))
 
-print(player_kevin.name)
+my_team = Player.get_team(players)
+print(my_team)
