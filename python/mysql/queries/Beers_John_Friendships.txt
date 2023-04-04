@@ -1,0 +1,8 @@
+INSERT INTO users (first_name, last_name)
+VALUES ('Amy', 'Giver');
+
+INSERT INTO users (first_name, last_name)
+VALUES ('Eli', 'Byers');
+
+INSERT INTO users (first_name, last_name)
+VALUES ('Marky', 'Mark');
