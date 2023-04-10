@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex
+}
+
+.box {
+    display: flex;
+    background-color: blue;
+    border: 5px solid black;
+    height: 100px;
+    margin: 10px;
+    width: 100px;
+}
