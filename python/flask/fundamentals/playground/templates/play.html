@@ -7,13 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
     <title>Playground</title>
+    <style>
+        .box {
+            display: flex;
+            background-color: var(--color);
+            border: 1px solid black;
+            height: 100px;
+            margin: 10px;
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-        
         {% for i in range(0, num) %}
-        <div class="box"></div>
+        <div class="box" style="--color: {{ color }}"></div>
         {% endfor %}
     </div>
 </body>
