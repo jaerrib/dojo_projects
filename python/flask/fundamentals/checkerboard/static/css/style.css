@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: inline-block;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.row {
+    font-size: 0;
+}
+
+.box {
+    display: inline-block;
+    background-color: var(--color);
+    height: 100px;
+    margin: 0;
+    width: 100px;
+}
