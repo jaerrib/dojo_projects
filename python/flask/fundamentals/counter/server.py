@@ -22,15 +22,11 @@ def destroy_session():
     session.clear()
     return redirect('/')
 
+
 @app.route('/reset')
 def reset():
     session.clear()
     return redirect('/')
-
-# @app.route('/add2')
-# def increase_count(amount):
-#     session["visits"] += int(amount)
-#     return redirect('/')
 
 
 if __name__ == "__main__":
