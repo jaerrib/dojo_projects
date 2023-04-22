@@ -13,11 +13,8 @@
 <body>
     <div class="container">
         <div class="row g-3 mt-3 align-items-center">
-
-
             <h1 class="col-auto">Your Gold:</h1>
-            <h1 class="col-auto">0</h1>
-
+            <h1 class="col-auto">{{session["gold"]}}</h1>
         </div>
 
         <div class="album py-5 mt-4 bg-body-tertiary">
@@ -30,7 +27,7 @@
                             <p>(earns 10-20 gold)</p>
                             <form action="/process_money" method="post">
                                 <input type="hidden" name="building" value="farm">
-                                <input type="submit" value="Find Gold!" class="btn btn-primary">
+                                <input type="submit" value="Find Gold!" class="btn btn-warning">
                             </form>
                         </div>
                     </div>
@@ -40,7 +37,7 @@
                             <p>(earns 5-10 gold)</p>
                             <form action="/process_money" method="post">
                                 <input type="hidden" name="building" value="cave">
-                                <input type="submit" value="Find Gold!" class="btn btn-primary">
+                                <input type="submit" value="Find Gold!" class="btn btn-warning">
                             </form>
                         </div>
                     </div>
@@ -50,7 +47,7 @@
                             <p>(earns 2-5 gold)</p>
                             <form action="/process_money" method="post">
                                 <input type="hidden" name="building" value="house">
-                                <input type="submit" value="Find Gold!" class="btn btn-primary">
+                                <input type="submit" value="Find Gold!" class="btn btn-warning">
                             </form>
                         </div>
                     </div>
@@ -60,7 +57,7 @@
                             <p>(earns/takes 0-50 gold)</p>
                             <form action="/process_money" method="post">
                                 <input type="hidden" name="building" value="casino">
-                                <input type="submit" value="Find Gold!" class="btn btn-primary">
+                                <input type="submit" value="Find Gold!" class="btn btn-warning">
                             </form>
                         </div>
                     </div>
