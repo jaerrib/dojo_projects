@@ -61,18 +61,23 @@
                             </form>
                         </div>
                     </div>
-
                 </div>
             </div>
 
         </div>
         <div class="mt-4">
             <h3>Activities:</h3>
-            <textarea class="form-control" id="activities" rows="5">
+            <div class="overflow-auto form-control overflow-y-scroll" style="height: 100px">
                 {% for index in range((session["activities"]|length) - 1, -1, -1) %}
-                {{session["activities"][index]}}
+                {% if "lost" not in session["activities"][index]%}
+                <p class="text-success">
+                    {% else %}
+                <p class="text-danger">
+                    {% endif %}
+                    {{session["activities"][index]}}
+                </p>
                 {% endfor %}
-            </textarea>
+            </div>
         </div>
         <a href="{{url_for('reset')}}" class="btn btn-danger mt-3" type="submit">Reset</a>
 
