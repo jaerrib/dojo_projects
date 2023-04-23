@@ -11,6 +11,8 @@ def index():
         session["gold"] = 0
     if not "activities" in session:
         session["activities"] = []
+    if not "moves" in session:
+        session["moves"] = 0
     return render_template("index.html")
 
 
@@ -38,13 +40,12 @@ def process():
     elif request.form["building"] == "casino":
         gold = randint(-50, 50)
     if gold >= 0:
-        message = f"Earned {gold} gold from the {selection}!" + event_time
-    if gold >= 0 and selection == "casino":
-        message = f"Entered a casino and earned {gold} gold!" + event_time
+        message = f"Earned {gold} gold from the {selection}!"
     if gold < 0 and selection == "casino":
-        message = f"Entered a casino and lost {gold} gold...ouch!" + event_time
-    session["activities"].append(message)
+        message = f"Entered a casino and lost {gold} gold...ouch!"
+    session["activities"].append(message + event_time)
     session["gold"] += gold
+    session["moves"] += 1
     return redirect("/")
 
 @app.route("/reset")
