@@ -20,23 +20,43 @@ def index():
 
 @app.route("/process_money", methods=["POST"])
 def process():
-    selection = request.form["building"]
-    event_time = f" ({datetime.now().strftime('%Y/%m/%d %l:%M %p')})"
+    session["selection"] = request.form["building"]
+    return redirect(session['selection'])
 
-    if request.form["building"] == "farm":
-        gold = randint(10, 20)
-    elif request.form["building"] == "cave":
-        gold = randint(5, 10)
-    elif request.form["building"] == "house":
-        gold = randint(2, 5)
-    elif request.form["building"] == "casino":
-        gold = randint(-50, 50)
-    if gold >= 0:
-        message = f"Earned {gold} gold from the {selection}!"
-    if gold < 0 and selection == "casino":
-        message = f"Entered a casino and lost {-(gold)} gold...ouch!"
+
+@app.route("/farm")
+def farm():
+    session["turn_gold"] = randint(10, 20)
+    return redirect("result")
+
+
+@app.route("/cave")
+def cave():
+    session["turn_gold"] = randint(5, 10)
+    return redirect("result")
+
+
+@app.route("/house")
+def house():
+    session["turn_gold"] = randint(2, 5)
+    return redirect("result")
+
+
+@app.route("/casino")
+def casino():
+    session["turn_gold"] = randint(-50, 50)
+    return redirect("result")
+
+
+@app.route("/result")
+def result():
+    event_time = f" ({datetime.now().strftime('%Y/%m/%d %l:%M %p')})"
+    if session["turn_gold"] >= 0:
+        message = f"Earned {session['turn_gold']} gold from the {session['selection']}!"
+    if session["turn_gold"] < 0 and session["selection"] == "casino":
+        message = f"Entered a casino and lost {-(session['turn_gold'])} gold...ouch!"
     session["activities"].append(message + event_time)
-    session["gold"] += gold
+    session["gold"] += session["turn_gold"]
     session["moves"] += 1
     if session["gold"] > 250:
         session["activities"].append("You win!")

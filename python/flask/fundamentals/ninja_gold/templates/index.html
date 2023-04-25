@@ -77,8 +77,10 @@
             <h3>Activities:</h3>
             <div class="overflow-auto form-control overflow-y-scroll" style="height: 100px">
                 {% for index in range((session["activities"]|length) - 1, -1, -1) %}
-                {% if session["game_over"] and index == session["moves"] %}
-                <p class="text-primary">
+                {% if session["game_over"] and "win" in session["activities"][index] %}
+                <p class="text-bg-success lead p-3">
+                    {% elif session["game_over"] and "lose" in session["activities"][index] %}
+                <p class="text-bg-danger lead p-3">
                     {% elif "lost" not in session["activities"][index] %}
                 <p class="text-success">
                     {% else %}
