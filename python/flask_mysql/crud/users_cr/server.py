@@ -17,7 +17,7 @@ def read():
 
 @app.route('/add')
 def add():
-    return redirect("add.html")
+    return render_template("add.html")
 
 
 @app.route('/create', methods=['POST'])
