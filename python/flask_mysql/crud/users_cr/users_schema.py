@@ -21,7 +21,6 @@ class User:
 
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO users ( first_name , last_name , email , " \
-                "created_at, updated_at ) VALUES ( %(first_name)s , " \
-                "%(last_name)s , %(email)s , NOW() , NOW() );"
+        query = "INSERT INTO users ( first_name , last_name , email ) \
+            VALUES ( %(first_name)s , %(last_name)s , %(email)s);"
         return connectToMySQL('users_schema').query_db(query, data)
