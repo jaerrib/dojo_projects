@@ -25,6 +25,12 @@ def read_one(id):
     return render_template("profile.html", user=user)
 
 
+@app.route('/users/<int:id>/edit')
+def edit_user(id):
+    user = User.get_one(id)
+    return render_template("edit.html", user=user)
+
+
 @app.route('/create', methods=['POST'])
 def create():
     data = {
@@ -33,7 +39,18 @@ def create():
         "email": request.form["email"]
     }
     User.save(data)
-    return redirect("/read")
+    return redirect("/users")
+
+
+@app.route('/update', methods=['POST'])
+def update():
+    User.update(request.form)
+    return redirect('/users')
+
+@app.route('/users/<int:id>/delete')
+def delete(id):
+    User.delete(id)
+    return redirect('/users')
 
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@
         <p>Email: {{user.email}}</p>
         <p>Created at: {{user.created_at}}</p>
         <p>Last updated on: {{user.updated_at}}</p>
-        <a href="#">Edit</a> | <a href="#">Delete</a>
+        <a href="/users/{{user.id}}/edit">Edit</a> | <a href="/users/{{user.id}}/delete">Delete</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"

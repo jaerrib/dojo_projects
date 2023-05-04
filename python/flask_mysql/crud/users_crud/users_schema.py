@@ -3,6 +3,7 @@ from mysqlconnection import connectToMySQL
 
 class User:
     DB = 'users_schema'
+
     def __init__(self, data):
         self.id = data['id']
         self.first_name = data['first_name']
@@ -34,7 +35,14 @@ class User:
         return cls(results[0])
 
     @classmethod
+    def update(cls, data):
+        query = """UPDATE users
+                SET first_name=%(first_name)s,last_name=%(last_name)s,email=%(email)s
+                WHERE id = %(id)s;"""
+        return connectToMySQL(cls.DB).query_db(query, data)
+
+    @classmethod
     def delete(cls, user_id):
-        query  = "DELETE FROM users WHERE id = %(id)s;"
+        query = "DELETE FROM users WHERE id = %(id)s;"
         data = {"id": user_id}
         return connectToMySQL(cls.DB).query_db(query, data)

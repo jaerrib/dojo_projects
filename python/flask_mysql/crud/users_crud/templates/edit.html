@@ -13,21 +13,22 @@
 <body>
     <div class="container">
         <a href="/users" class="mb=3">Home</a>
-        <h1>Add a New User</h1>
-        <form action="/create" method="POST">
+        <h1>Edit User {{user.id}}</h1>
+        <form action="/update" method="POST">
+            <input type="hidden" name="id" value={{user.id}}>
             <div class="mb-3">
                 <label for="first_name" class="form-label">First Name:</label>
-                <input type="text" name="first_name" class="form-control">
+                <input type="text" name="first_name" class="form-control" placeholder={{user.first_name}}>
             </div>
             <div class="mb-3">
                 <label for="last_name" class="form-label">Last Name:</label>
-                <input type="text" name="last_name" class="form-control">
+                <input type="text" name="last_name" class="form-control" placeholder={{user.last_name}}>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
-                <input type="text" name="email" class="form-control">
+                <input type="text" name="email" class="form-control" placeholder={{user.email}}>
             </div>
-            <button type="submit" class="btn btn-primary">Add User</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
 
     </div>
