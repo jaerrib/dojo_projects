@@ -11,13 +11,18 @@ def index():
 @app.route('/users')
 def read():
     users = User.get_all()
-    print(users)
     return render_template("users.html", all_users=users)
 
 
 @app.route('/new')
 def add():
     return render_template("new.html")
+
+
+@app.route('/users/<int:id>')
+def read_one(id):
+    user = User.get_one(id)
+    return render_template("profile.html", user=user)
 
 
 @app.route('/create', methods=['POST'])
