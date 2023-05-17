@@ -15,10 +15,10 @@
         <div class="d-flex">
             <div class="col-6 m-3 p-3 bg-dark text-light">
                 <h1 class="text-primary text-center">New Dojo</h1>
-                <form action="" method="post">
+                <form action="/dojos/create" method="POST">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
-                        <input type="text" class="form-control" id="name">
+                        <input type="text" name="name" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary">Create</button>
                 </form>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <p class="m-3 p-3">
-            <a href="/ninjas" class="btn btn-primary">Add Ninja</a>
+            <a href="/ninja" class="btn btn-primary">Add Ninja</a>
         </p>
     </div>
 
