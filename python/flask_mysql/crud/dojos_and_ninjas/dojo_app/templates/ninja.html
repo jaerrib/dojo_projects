@@ -17,7 +17,7 @@
             <form action="/ninja/create" method="post">
                 <div class="mb-3 form-group">
                     <label for="dojo">Dojo:</label>
-                    <select name="dojo_id" id="user_id" class="form-select">
+                    <select name="dojo_id" class="form-select">
                         {% for dojo in dojos %}
                         <option value="{{dojo.id}}">{{dojo.name}}</option>
                         {% endfor %}

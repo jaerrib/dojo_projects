@@ -1,6 +1,7 @@
 from dojo_app import app
 from flask import render_template, request, redirect
 from dojo_app.models.model_dojo import Dojo
+from dojo_app.models.model_ninja import Ninja
 
 
 @app.route('/')
@@ -21,9 +22,3 @@ def new_dojo():
     }
     Dojo.save(request.form)
     return redirect('/dojos')
-
-
-@app.route('/dojos/<int:id>')
-def read_one(id):
-    dojo = Dojo.get_dojo_with_ninjas(id)
-    return render_template('dojo.html', dojo=dojo)
