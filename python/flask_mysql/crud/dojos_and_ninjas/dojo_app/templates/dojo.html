@@ -28,7 +28,7 @@
                     <td>{{ninja.first_name}}</td>
                     <td>{{ninja.last_name}}</td>
                     <td>{{ninja.age}}</td>
-                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                    <td><a href="/ninjas/edit/{{ninja.id}}">Edit</a> | <a href="/ninjas/delete/{{ninja.id}}/{{ninja.dojo_id}}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

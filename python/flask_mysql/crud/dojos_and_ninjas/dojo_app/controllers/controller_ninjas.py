@@ -27,9 +27,17 @@ def read_one(dojo_id):
 
 @app.route('/ninjas/edit/<int:ninja_id>')
 def edit_ninja(ninja_id):
-    pass
-    return render_template('edit_ninja.html', ninja=ninja)
+    dojos = Dojo.get_all()
+    ninja = Ninja.get_one(ninja_id)
+    return render_template('edit_ninja.html', ninja=ninja, dojos=dojos)
 
-@app.route('/ninjas/delete/<int:ninja_id>')
-def delete_ninja(ninja_id):
-    pass
+@app.route('/ninjas/update', methods=['POST'])
+def update():
+    Ninja.update(request.form)
+    dojo_id = request.form["dojo_id"]
+    return redirect(f'/ninjas/{dojo_id}')
+
+@app.route('/ninjas/delete/<int:ninja_id>/<int:dojo_id>')
+def delete_ninja(ninja_id, dojo_id):
+    Ninja.delete(ninja_id)
+    return redirect(f'/ninjas/{dojo_id}')
