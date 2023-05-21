@@ -19,3 +19,8 @@ class Author:
         for author in results:
             authors.append(cls(author))
         return authors
+
+    @classmethod
+    def save(cls, data):
+        query = 'INSERT INTO authors (name) VALUES (%(name)s)'
+        return connectToMySQL(cls.DB).query_db(query, data)

@@ -15,7 +15,7 @@
         <div class="d-flex">
             <div class="col-6 m-3 p-3 bg-dark text-light">
                 <h1 class="text-primary">New Author</h1>
-                <form action="/authors/new_author" method="post">
+                <form action="/authors/new_author" method="POST">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
                         <input type="text" name="name" class="form-control">
@@ -27,7 +27,7 @@
                 <h1 class="text-primary">All Authors</h1>
                 <div class="m-3 p-3">
                     {% for author in authors %}
-                    <p><a href="authors/{{author.id}}" class="">{{author.name}}</a></p>
+                    <p><a href="/authors/{{author.id}}" class="link-light">{{author.name}}</a></p>
                     {% endfor %}
                 </div>
                 <p class="m-3 p-3">
