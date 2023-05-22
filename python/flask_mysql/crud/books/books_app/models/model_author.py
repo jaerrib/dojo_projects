@@ -45,6 +45,7 @@ class Author:
                 "updated_at": row_from_db['books.updated_at']
             }
             all_books.append(Book(book_data))
+            
         return (all_books, author_name)
 
 
