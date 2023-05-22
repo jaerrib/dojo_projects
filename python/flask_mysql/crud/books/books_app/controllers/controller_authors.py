@@ -15,3 +15,8 @@ def authors():
 def new_author():
     Author.save(request.form)
     return redirect('/authors')
+
+@app.route('/authors/<int:id>')
+def author_show(id):
+    (favorites, author) = Author.get_author_with_favorites({'id':id})
+    return render_template('author_show.html', favorites=favorites, author=author)
