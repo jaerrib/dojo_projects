@@ -28,7 +28,7 @@ class User:
         if len(user['email']) < 1:
             flash("Email must not be blank")
             is_valid = False
-        if not EMAIL_REGEX.match(user['email']):
+        elif not EMAIL_REGEX.match(user['email']):
             flash("Invalid email address!")
             is_valid = False
         connection = connectToMySQL(cls.DB)
