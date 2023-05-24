@@ -16,8 +16,8 @@ class User:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
-    @staticmethod
-    def validate_user(user):
+    @classmethod
+    def validate_user(cls, user):
         is_valid = True
         if len(user['first_name']) < 1:
             flash("First name must not be blank")
@@ -28,12 +28,16 @@ class User:
         if len(user['email']) < 1:
             flash("Email must not be blank")
             is_valid = False
-        # test whether a field matches the pattern
-        elif not EMAIL_REGEX.match(user['email']):
+        if not EMAIL_REGEX.match(user['email']):
             flash("Invalid email address!")
             is_valid = False
+        connection = connectToMySQL(cls.DB)
+        query = "SELECT * FROM users WHERE email = %(email)s"
+        results = connection.query_db(query, user)
+        if len(results) != 0:
+            flash('This email already exists')
+            is_valid = False
         return is_valid
-
 
     @classmethod
     def get_all(cls):
