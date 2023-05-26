@@ -8,6 +8,7 @@ def index():
 
 @app.route('/cookies')
 def cookies():
+    session.clear()
     orders = Order.get_all()
     return render_template('cookies.html', orders=orders)
 
@@ -33,3 +34,19 @@ def create():
 def edit_order(id):
     order = Order.get_one(id)
     return render_template('edit.html', order=order)
+
+@app.route('/cookies/update', methods=['POST'])
+def change_order():
+    data = {
+        'id': request.form['id'],
+        'customer_name': request.form['customer_name'],
+        'cookie_type': request.form['cookie_type'],
+        'num_of_boxes': request.form['num_of_boxes']
+    }
+    if not Order.is_valid_order(data):
+        if 'data' not in session:
+            session['data'] = data
+        order_id = data['id']
+        return redirect(f'/cookies/edit/{order_id}')
+    Order.update(data)
+    return redirect('/cookies')

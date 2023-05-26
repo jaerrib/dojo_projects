@@ -12,10 +12,11 @@
 
 <body>
     <div class="container">
-        <h1>Log a New Order</h1>
         <div class="d-flex justify-content-between mb-3">
-            <h2>All Orders</h2>
-            <a href="/" class="btn btn-secondary">Back to purchases</a>
+            <h1>Edit order</h1>
+            <div class="d-flex justify-content-between">
+                <a href="/" class="btn btn-secondary">Back to purchases</a>
+            </div>
         </div>
         <div class="mb-3">
             {% with messages = get_flashed_messages() %}
@@ -26,19 +27,19 @@
             {% endif %}
             {% endwith %}
         </div>
-
-        <form action="/cookies/create" method="post">
+        <form action="/cookies/update" method="post">
+            <input type="hidden" name="id" value="{{order.id}}">
             <div class="mb-3">
                 <label for="customer_name" class="form_label">Name</label>
-                <input type="text" name="customer_name" class="form_control" placeholder="Name">
+                <input type="text" name="customer_name" class="form_control" value="{{order.customer_name}}">
             </div>
             <div class="mb-3">
                 <label for="cookie_type" class="form_label">Cookie Type</label>
-                <input type="text" name="cookie_type" class="form_control" placeholder="ex: Samoas">
+                <input type="text" name="cookie_type" class="form_control" value="{{order.cookie_type}}">
             </div>
             <div class="mb-3">
                 <label for="num_of_boxes" class="form_label">Number of Boxes</label>
-                <input type="text" name="num_of_boxes" class="form_control" placeholder="0">
+                <input type="text" name="num_of_boxes" class="form_control" value="{{order.num_of_boxes}}">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
