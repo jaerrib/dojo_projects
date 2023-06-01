@@ -21,10 +21,11 @@ def register():
         'email': request.form['email'],
         'password': pw_hash
     }
-    new_user = User.save(data)
+    user_id = User.save(data)
     if not 'user_id' in session:
-        session['user_id'] = new_user.id
-    return render_template('success.html')
+        session['user_id'] = user_id
+    user_in_db = User.get_by_email(data)
+    return render_template('success.html', first_name=user_in_db.first_name)
 
 
 @app.route('/users/login', methods=['POST'])
@@ -44,7 +45,7 @@ def login():
         return rediect('/')
     if not 'user_id' in session:
         session['user_id'] = user_in_db.id
-    return render_template('success.html')
+    return render_template('success.html', first_name=user_in_db.first_name)
 
 
 @app.route('/users/success')
