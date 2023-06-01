@@ -19,8 +19,8 @@ class User:
 
     @classmethod
     def get_by_email(cls, data):
-        query = 'SELECT * FROM users WHERE email = %(email);'
-        results = connectToMySQL(cls.DB).query_db(query, data)
+        query = 'SELECT * FROM users WHERE email = %(email)s;'
+        result = connectToMySQL(cls.DB).query_db(query, data)
         if len(result) < 1:
             return False
         return cls(result[0])
@@ -28,27 +28,32 @@ class User:
     @classmethod
     def save(cls, data):
         query = 'INSERT INTO users (first_name, last_name, email, password) \
-            VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s;)'
+            VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);'
         return connectToMySQL(cls.DB).query_db(query, data)
 
     @classmethod
     def validate_login(cls, data):
         is_valid = True
         for key in data:
-            if data['key'] == "":
-                print(data['key'])
-                flash('All fields required', 'login')
-                is_valid = False
+            is_blank = False
+            if data[key] == "":
+                is_blank = True
+        if is_blank:
+            flash('All fields required', 'login')
+            is_valid = False
         return is_valid
 
     @classmethod
     def validate_registration(cls, data):
         is_valid = True
         for key in data:
-            if data['key'] == "":
-                flash('All fields required', 'register')
-                is_valid = False
-        if not EMAIL_REGEX.match(data['email']):
+            is_blank = False
+            if data[key] == "":
+                is_blank = True
+        if is_blank:
+            flash('All fields required', 'register')
+            is_valid = False
+        elif not EMAIL_REGEX.match(data['email']):
             flash('Invalid email address', 'register')
             is_valid = False
         query = 'SELECT * FROM users WHERE email = %(email)s;'

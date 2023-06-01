@@ -22,15 +22,14 @@ def register():
         'password': pw_hash
     }
     new_user = User.save(data)
-    if not 'user' in session:
-        sesssion['user'] = new_user
+    if not 'user_id' in session:
+        session['user_id'] = new_user.id
     return render_template('success.html')
 
 
 @app.route('/users/login', methods=['POST'])
 def login():
     if not User.validate_login(request.form):
-        print('nope')
         return redirect('/')
     data = {
         'email': request.form['email'],
@@ -43,12 +42,15 @@ def login():
     if not bcrypt.check_password_hash(user_in_db.password, data['password']):
         flash('Invalid password', 'login')
         return rediect('/')
-    session['user'] = user_in_db
+    if not 'user_id' in session:
+        session['user_id'] = user_in_db.id
     return render_template('success.html')
 
 
 @app.route('/users/success')
 def success():
+    if not 'user_id' in session:
+        return redirect('/')
     return render_template('success.html')
 
 
