@@ -3,6 +3,7 @@ from flask import flash
 from app.config.mysqlconnection import connectToMySQL
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+NAME_REGEX = re.compile(r'[a-zA-Z]')
 
 class User:
 
@@ -53,6 +54,19 @@ class User:
         if is_blank:
             flash('All fields required', 'register')
             is_valid = False
+        if not NAME_REGEX.match(data['first_name']):
+            flash('First name must be at all letters', 'register')
+            is_valid = False
+        if not NAME_REGEX.match(data['last_name']):
+            flash('Last name must be at all letters', 'register')
+            is_valid = False
+        if len(data['first_name']) < 2 or \
+            len(data['last_name']) < 2:
+            flash('First / last names must be at least 2 characters', 'register')
+            is_valid = False
+        if len(data['password']) < 8:
+            flash('Password must be at least 8 characters', 'register')
+            is_valid = False
         elif not EMAIL_REGEX.match(data['email']):
             flash('Invalid email address', 'register')
             is_valid = False
@@ -60,5 +74,8 @@ class User:
         results = connectToMySQL(cls.DB).query_db(query, data)
         if len(results) != 0:
             flash('This email already exists')
+            is_valid = False
+        if data['password'] != data['confirm_password']:
+            flash('Passwords do not match', 'register')
             is_valid = False
         return is_valid
