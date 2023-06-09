@@ -57,3 +57,7 @@ def success():
 def logout():
     session.clear()
     return redirect('/')
+
+@app.route('/wall')
+def wall():
+    return render_template('wall.html')
