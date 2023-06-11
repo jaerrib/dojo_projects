@@ -16,7 +16,7 @@
         <div class="d-flex justify-content-between">
             <h2>Coding Dojo Wall</h2>
             <div class="d-flex">
-                <h2>Welcome, User!</h2>
+                <h2>Welcome, {{user.first_name}}!</h2>
                 <h2 class="ms-5"><a href="/users/logout">Logout</a></h2>
             </div>
         </div>
@@ -34,8 +34,8 @@
             </div>
             {% endif %}
             {% endwith %}
-            <form action="" method="post">
-                <input type="text-area" name="message" class="form-control mb-3" style="height: 100px">
+            <form action="/posts/create" method="post">
+                <input type="text-area" name="content" class="form-control mb-3" style="height: 100px">
                 <input type="submit" value="Publish" class="btn btn-primary">
             </form>
         </div>
@@ -43,7 +43,23 @@
         <hr>
         <!-- Community Posts -->
         <div class="container">
-            <p>Placeholder</p>
+            <h1 class="mb-3">All Community Posts</h1>
+
+            {% for post in all_posts|reverse %}
+            <div class="m-3 p-3 border">
+                <h5 class="text-secondary">{{post.creator.first_name}} - {{post.created_at}}</h5>
+                <div class="d-flex justify-content-between">
+                    <p class="mx-5">{{post.content}}</p>
+                    {% if post.user_id == session['user_id'] %}
+                    <form action="/posts/delete" method="post">
+                        <input type="hidden" name="id" value={{post.id}}>
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
         </div>
         <!-- End Community Posts -->
     </div>

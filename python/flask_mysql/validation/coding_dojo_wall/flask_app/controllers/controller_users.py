@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
 from flask_app.models.model_user import User
+from flask_app.models import model_post
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -40,7 +41,7 @@ def login():
         return redirect('/')
     if not bcrypt.check_password_hash(user_in_db.password, data['password']):
         flash('Invalid password', 'login')
-        return rediect('/')
+        return redirect('/')
     if not 'user_id' in session:
         session['user_id'] = user_in_db.id
     return redirect('/wall')
@@ -60,4 +61,8 @@ def logout():
 
 @app.route('/wall')
 def wall():
-    return render_template('wall.html')
+    if not 'user_id' in session:
+        return redirect('/')
+    user = User.get_one(session['user_id'])
+    all_posts = model_post.Post.get_all_posts_with_creator()
+    return render_template('wall.html', user=user, all_posts=all_posts)

@@ -5,6 +5,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 NAME_REGEX = re.compile(r'[a-zA-Z]')
 
+
 class User:
 
     DB = 'coding_dojo_wall'
@@ -18,6 +19,8 @@ class User:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
+        self.posts = []
+
     @classmethod
     def get_by_email(cls, data):
         query = 'SELECT * FROM users WHERE email = %(email)s;'
@@ -25,6 +28,13 @@ class User:
         if len(result) < 1:
             return False
         return cls(result[0])
+
+    @classmethod
+    def get_one(cls, data):
+        query = "SELECT * FROM users WHERE id = %(id)s;"
+        data = {"id": data}
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        return cls(results[0])
 
     @classmethod
     def save(cls, data):
@@ -61,7 +71,7 @@ class User:
             flash('Last name must be at all letters', 'register')
             is_valid = False
         if len(data['first_name']) < 2 or \
-            len(data['last_name']) < 2:
+                len(data['last_name']) < 2:
             flash('First / last names must be at least 2 characters', 'register')
             is_valid = False
         if len(data['password']) < 8:
