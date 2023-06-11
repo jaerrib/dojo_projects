@@ -20,6 +20,7 @@ class User:
         self.updated_at = data['updated_at']
 
         self.posts = []
+        self.comments = []
 
     @classmethod
     def get_by_email(cls, data):

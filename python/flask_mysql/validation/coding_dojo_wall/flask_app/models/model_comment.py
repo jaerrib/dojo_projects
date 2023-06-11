@@ -1,10 +1,9 @@
 from flask import flash
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models import model_user
-from flask_app.models import model_comment
 
 
-class Post:
+class Comment:
 
     DB = 'coding_dojo_wall'
 
@@ -14,28 +13,27 @@ class Post:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.user_id = data['user_id']
+        self.post_id = data['post_id']
 
         self.creator = None
-        self.comments = []
 
     @classmethod
     def save(cls, data):
-        query = 'INSERT INTO posts (content, user_id) \
-            VALUES (%(content)s, %(user_id)s);'
-        data = {
-            'content': data['content'],
-            'user_id': data['user_id']
-        }
+        query = 'INSERT INTO comments (content, user_id, post_id) \
+            VALUES (%(content)s, %(user_id)s, %(post_id)s);'
         return connectToMySQL(cls.DB).query_db(query, data)
 
     @classmethod
-    def get_all_posts_with_creator(cls):
-        query = "SELECT * FROM posts JOIN users ON posts.user_id = users.id;"
-        results = connectToMySQL(cls.DB).query_db(query)
-        all_posts = []
+    def get_all_comments_with_creator(cls, data):
+        query = "SELECT * FROM comments \
+            JOIN users ON comments.user_id = users.id \
+            WHERE post_id = %(post_id)s;"
+        data = {'post_id': data}
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        all_comments = []
         for row in results:
-            one_post = cls(row)
-            one_posts_author_info = {
+            one_comment = cls(row)
+            one_comments_author_info = {
                 "id": row['users.id'],
                 "first_name": row['first_name'],
                 "last_name": row['last_name'],
@@ -44,26 +42,24 @@ class Post:
                 "created_at": row['users.created_at'],
                 "updated_at": row['users.updated_at']
             }
-            author = model_user.User(one_posts_author_info)
-            one_post.creator = author
-            comments = model_comment.Comment.get_all_comments_with_creator(one_post.id)
-            one_post.comments = comments
-            all_posts.append(one_post)
-        return all_posts
+            author = model_user.User(one_comments_author_info)
+            one_comment.creator = author
+            all_comments.append(one_comment)
+        return all_comments
 
     @classmethod
-    def validate_post(cls, data):
+    def validate_comment(cls, data):
         is_valid = True
         for key in data:
             is_blank = False
             if data[key] == "":
                 is_blank = True
         if is_blank:
-            flash('*Post content must not be blank', 'post')
+            flash('*Post content must not be blank', 'comment')
             is_valid = False
         return is_valid
 
     @classmethod
     def delete(cls, data):
-        query = 'DELETE FROM posts WHERE id = %(id)s;'
+        query = 'DELETE FROM comments WHERE id = %(id)s;'
         return connectToMySQL(cls.DB).query_db(query, data)
