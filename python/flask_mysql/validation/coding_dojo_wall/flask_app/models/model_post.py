@@ -15,17 +15,16 @@ class Post:
         self.user_id = data['user_id']
 
         self.creator = None
+        self.comments = []
 
     @classmethod
     def save(cls, data):
         query = 'INSERT INTO posts (content, user_id) \
             VALUES (%(content)s, %(user_id)s);'
-        print("sent data", data)
         data = {
             'content': data['content'],
             'user_id': data['user_id']
         }
-        print("parsed data", data)
         return connectToMySQL(cls.DB).query_db(query, data)
 
     @classmethod
