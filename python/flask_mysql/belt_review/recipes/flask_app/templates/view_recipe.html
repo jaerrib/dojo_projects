@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,54 @@
 </head>
 
 <body>
+    <div class="container">
 
+        <!-- Header -->
+        <div class="mb-3">
+            <h1 class="mb-3">Welcome, {{user.first_name}}!</h1>
+            <div class="d-flex justify-content-between">
+                <h2>All posted recipes:</h2>
+                <div class="d-flex mb-3">
+                    <h2 class="ms-5"><a href="/dashboard">Back to recipes</a></h2>
+                    <h2 class="ms-5"><a href="/users/logout">Logout</a></h2>
+                </div>
+            </div>
+        </div>
+        <!-- End Header -->
+
+        <!-- Recipe -->
+        <div class="d-flex justify-content-between mb-3">
+            <h2>{{recipe.name}}</h2>
+            <h2>Posted by: {{recipe.creator.first_name}}</h2>
+        </div>
+
+
+        <div class="border p-3">
+            <div class="d-flex flex-row mb-3">
+                <p class="p-2">Description:</p>
+                <p class="p-2">{{recipe.description}}</p>
+            </div>
+            <div class="d-flex flex-row mb-3">
+                <p class="p-2">Under 30 minutes?</p>
+                <p class="p-2">
+                    {% if recipe.under_30 == 1 %}
+                    Yes
+                    {% else %}
+                    No
+                    {% endif %}
+                </p>
+            </div>
+            <div class="d-flex flex-row mb-3">
+                <p class="p-2">Instructions:</p>
+                <p class="p-2">{{recipe.instructions}}</p>
+            </div>
+            <div class="d-flex flex-row mb-3">
+                <p class="p-2">Date Made:</p>
+                <p class="p-2">{{recipe.date_made}}</p>
+            </div>
+        </div>
+        <!-- End Recipe -->
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>

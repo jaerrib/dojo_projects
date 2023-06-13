@@ -18,7 +18,7 @@
             <div class="d-flex justify-content-between">
                 <h2>All posted recipes:</h2>
                 <div class="d-flex mb-3">
-                    <h2 class="ms-5"><a href="/users/create">+ Create</a></h2>
+                    <h2 class="ms-5"><a href="/recipes/new">+ Create</a></h2>
                     <h2 class="ms-5"><a href="/users/logout">Logout</a></h2>
                 </div>
             </div>
@@ -35,12 +35,28 @@
                 <th>Actions</th>
             </tr>
         </thead>
+        <tbody>
+            {% for recipe in all_recipes %}
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ recipe.name }}</td>
+                <td>
+                    {% if recipe.under_30 == 1 %}
+                    Yes
+                    {% else %}
+                    No
+                    {% endif %}
+                </td>
+                <td>{{ recipe.creator.first_name }}</td>
+                <td>
+                <a href="/recipes/view/{{recipe.id}}">view recipe</a>
+                {% if recipe.user_id == session["user_id"] %}
+                | <a href="/recipes/edit/{{recipe.id}}">edit</a>
+                | <a href="/recipes/delete/{{recipe.id}}">delete</a>
+                </td>
+                {% endif %}
             </tr>
+            {% endfor %}
+        </tbody>
         </table>
         <!-- End Recipes -->
     </div>
