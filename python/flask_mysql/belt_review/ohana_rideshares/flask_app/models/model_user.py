@@ -7,7 +7,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 class User:
 
-    DB = 'rideshare_schema'
+    DB = 'rideshares_schema'
 
     def __init__(self, data):
         self.id = data['id']
