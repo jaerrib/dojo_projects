@@ -47,13 +47,6 @@ def login():
     return redirect('/wall')
 
 
-@app.route('/users/success')
-def success():
-    if not 'user_id' in session:
-        return redirect('/')
-    return render_template('success.html')
-
-
 @app.route('/users/logout')
 def logout():
     session.clear()
