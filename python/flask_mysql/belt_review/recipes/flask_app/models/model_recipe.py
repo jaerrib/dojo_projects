@@ -54,7 +54,6 @@ class Recipe:
         result = connectToMySQL(cls.DB).query_db(query, data)
         return cls(result[0])
 
-
     @classmethod
     def validate_recipe(cls, data):
         is_valid = True
@@ -71,6 +70,17 @@ class Recipe:
             flash('Name/description/instructions must be > 3 characters', 'recipe')
             is_valid = False
         return is_valid
+
+    @classmethod
+    def update(cls, data):
+        query = 'UPDATE recipes \
+                SET name=%(name)s, \
+                description=%(description)s, \
+                instructions=%(instructions)s, \
+                date_made=%(date_made)s, \
+                under_30=%(under_30)s \
+                WHERE id = %(id)s;'
+        return connectToMySQL(cls.DB).query_db(query, data)
 
     @classmethod
     def delete(cls, data):
