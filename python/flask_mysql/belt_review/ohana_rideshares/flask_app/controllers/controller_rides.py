@@ -3,6 +3,7 @@ from flask import redirect, render_template, request, session
 from flask_app.controllers import controller_users
 from flask_app.models.model_ride import Ride
 from flask_app.models.model_user import User
+from flask_app.models.model_message import Message
 
 
 @app.route('/dashboard')
@@ -26,7 +27,7 @@ def create_ride():
     if not 'user_id' in session:
         return redirect('/')
     if not Ride.validate_ride(request.form):
-        return redirect('/rides/create')
+        return redirect('/rides/new')
     data = {
         'destination': request.form['destination'],
         'pickup_location': request.form['pickup_location'],
@@ -45,6 +46,7 @@ def view_ride(id):
     ride = Ride.get_one_ride(id)
     ride.creator = User.get_one(ride.user_id)
     ride.driver = User.get_one(ride.driver_id)
+    ride.messages = Message.get_all_messages(ride.id)
     return render_template('view.html', ride=ride)
 
 

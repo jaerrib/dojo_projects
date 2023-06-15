@@ -27,10 +27,40 @@
             <p><span class="fw-bold">Date</span> {{ride.date.strftime('%b %d')}}</p>
             <p><span class="fw-bold">Details</span> {{ride.details}}</p>
             <div class="d-flex flex-row">
-                <a href="/rides/edit/{{ride.id}}" class="btn btn-primary">Edit</a> <a href="/rides/delete/{{ride.id}}"
+                <a href="/rides/edit/{{ride.id}}" class="btn btn-primary">Edit</a>
+                {% if ride.user_id == session['user_id'] %}
+                <a href="/rides/delete/{{ride.id}}"
                     class="btn btn-danger ms-3">Delete</a>
+                {% endif %}
             </div>
         </div>
+
+        <hr>
+
+        <!-- Messages -->
+        <h2 class="text-secondary my-3">Ride messages:</h2>
+        {% for message in ride.messages %}
+        <p>
+            <span class="fw-bold">
+                {% if message.user_id == session['user_id'] %}
+                You:
+                {% else %}
+                {{message.creator.first_name}}:
+                {% endif %}
+            </span>
+            <span class="ms-3">
+                {{message.content}}
+            </span>
+        </p>
+        {% endfor %}
+        {% if ride.user_id == session['user_id'] or ride.driver_id == session['user_id'] %}
+        <form action="/messages/add_message" method="post">
+            <input type="hidden" name="ride_id" value="{{ride.id}}">
+            <input type="text" name="content" class="form-control my-3">
+            <input type="submit" value="Send message" class="btn btn-secondary">
+        </form>
+        {% endif %}
+        <!-- End Messages -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"

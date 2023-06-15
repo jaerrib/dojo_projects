@@ -42,13 +42,13 @@ class Ride:
             if data[key] == "":
                 is_blank = True
         if is_blank:
-            flash('All fields required', 'rides')
+            flash('All fields required', 'ride')
             is_valid = False
         if len(data['destination']) < 3 \
                 or len(data['pickup_location']) < 3:
-            flash('Destination/pickup location] must be > 3 characters', 'ride')
+            flash('Destination/pickup location must be > 3 characters', 'ride')
         if len(data['details']) < 10:
-            flash('Details must be > 10 characters', 'rides')
+            flash('Details must be > 10 characters', 'ride')
             is_valid = False
         return is_valid
 
@@ -70,18 +70,8 @@ class Ride:
             }
             creator = model_user.User(one_rides_creator_info)
             one_ride.creator = creator
-
             if one_ride.driver_id != None:
-                one_rides_driver_info = {
-                    "id": row['users.id'],
-                    "first_name": row['first_name'],
-                    "last_name": row['last_name'],
-                    "email": row['email'],
-                    "password": row['password'],
-                    "created_at": row['users.created_at'],
-                    "updated_at": row['users.updated_at']
-                }
-                driver = model_user.User(one_rides_driver_info)
+                driver = model_user.User.get_one(one_ride.driver_id)
                 one_ride.driver = driver
             all_rides.append(one_ride)
         return all_rides
@@ -131,7 +121,7 @@ class Ride:
             flash('All fields required', 'update')
             is_valid = False
         if len(data['pickup_location']) < 3:
-            flash('Pickup location] must be > 3 characters', 'update')
+            flash('Pickup location must be > 3 characters', 'update')
         if len(data['details']) < 10:
             flash('Details must be > 10 characters', 'update')
             is_valid = False

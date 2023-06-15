@@ -14,7 +14,8 @@
     <div class="container">
         <!-- Header -->
         <div class="d-flex justify-content-between">
-            <h2>Welcome, {{user.first_name}}!</h2></h2>
+            <h2>Welcome, {{user.first_name}}!</h2>
+            </h2>
             <div class="d-flex">
                 <h2 class="ms-5"><a href="/rides/new">Request a Ride</a></h2>
                 <h2 class="ms-5"><a href="/users/logout">Logout</a></h2>
@@ -25,7 +26,7 @@
 
         <div class="d-flex">
             <div class="col-6 mx-auto p-3">
-                <h1 >Rideshare Requests</h1>
+                <h1>Rideshare Requests</h1>
                 {% for ride in all_rides %}
                 {% if ride.driver_id == None %}
                 <div class="card my-3 p-3 shadow">
@@ -36,30 +37,38 @@
                         {% if ride.user_id == session['user_id'] %}
                         <a href="/rides/delete/{{ride.id}}" class="btn btn-danger">Delete</a>
                         {% else %}
-                        <a href="/rides/drive/{{ride.id}}">I can drive!</a>
+                        <a href="/rides/drive/{{ride.id}}" class="btn btn-primary">I can drive!</a>
                         {% endif %}
                     </p>
                 </div>
+                </span>
                 {% endif %}
                 {% endfor %}
             </div>
             <div class="col-6 mx-auto p-3">
                 <h1>Booked Rideshares</h1>
-                    {% for ride in all_rides %}
-                    {% if ride.driver_id != None %}
-                    <div class="card my-3 p-3 shadow">
-                        {% if ride.driver_id == session['user_id'] %}
-                        <p><span class="fw-bold">You</span> are driving <span class="fw-bold">{{ride.creator.first_name}}</span> to {{ride.destination}} on {{ride.date.strftime('%b %d')}}</p>
-                        <p><a href="/rides/view/{{ride.id}}" class="btn btn-info">Details</a> <a href="/rides/cancel/{{ride.id}}" class="btn btn-warning">Cancel</a></p>
-                        {% elif ride.user_id == session['user_id'] %}
-                        <p><span class="fw-bold">You</span> are riding with <span class="fw-bold">{{ride.driver.first_name}}</span> to {{ride.destination}} on {{ride.date.strftime('%b %d')}}</p>
-                        <p><a href="/rides/view/{{ride.id}}" class="btn btn-info">Details</a> <a href="/rides/delete/{{ride.id}}" class="btn btn-danger">Delete</a></p>
-                        {% else %}
-                        <p><span class="fw-bold">{{ride.driver.first_name}}</span> is driving <span class="fw-bold">{{ride.creator.first_name}}</span> to {{ride.destination}} on {{ride.date.strftime('%b %d')}}</p>
-                        {% endif %}
-                    </div>
+                {% for ride in all_rides %}
+                {% if ride.driver_id != None %}
+                <div class="card my-3 p-3 shadow">
+                    {% if ride.driver_id == session['user_id'] %}
+                    <p><span class="fw-bold">You</span> are driving <span
+                            class="fw-bold">{{ride.creator.first_name}}</span> to {{ride.destination}} on
+                        {{ride.date.strftime('%b %d')}}</p>
+                    <p><a href="/rides/view/{{ride.id}}" class="btn btn-info">Details</a> <a
+                            href="/rides/cancel/{{ride.id}}" class="btn btn-warning">Cancel</a></p>
+                    {% elif ride.user_id == session['user_id'] %}
+                    <p><span class="fw-bold">You</span> are riding with <span
+                            class="fw-bold">{{ride.driver.first_name}}</span> to {{ride.destination}} on
+                        {{ride.date.strftime('%b %d')}}</p>
+                    <p><a href="/rides/view/{{ride.id}}" class="btn btn-info">Details</a></p>
+                    {% else %}
+                    <p><span class="fw-bold">{{ride.driver.first_name}}</span> is driving <span
+                            class="fw-bold">{{ride.creator.first_name}}</span> to {{ride.destination}} on
+                        {{ride.date.strftime('%b %d')}}</p>
                     {% endif %}
-                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
