@@ -45,3 +45,8 @@ def login():
     if not 'user_id' in session:
         session['user_id'] = user_in_db.id
     return redirect('/dashboard')
+
+@app.route('/users/logout')
+def logout():
+    session.clear()
+    return redirect('/')

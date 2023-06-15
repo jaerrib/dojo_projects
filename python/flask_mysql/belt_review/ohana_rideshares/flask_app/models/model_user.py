@@ -19,7 +19,6 @@ class User:
         self.updated_at = data['updated_at']
 
         self.rides = []
-        self.messages = []
 
     @classmethod
     def get_by_email(cls, data):
