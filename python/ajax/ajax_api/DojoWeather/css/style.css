@@ -39,7 +39,6 @@ li {
 a.city_link {
     color: white;
     text-decoration: none;
-    
 }
 
 /* End Nav Bar */
@@ -77,7 +76,8 @@ hr {
     padding: 25px;
 }
 
-.day, .forecast {
+.day,
+.forecast {
     text-align: center;
 }
 

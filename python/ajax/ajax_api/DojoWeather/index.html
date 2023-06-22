@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
     <title>DojoWeather</title>
 </head>
 
@@ -20,9 +19,9 @@
             <div class="navbar">
                 <h1>DojoWeather</h1>
                 <ul>
-                    <li><a href="#" class="city_link" onclick="loadReport()">Burbank</a></li>
-                    <li><a href="#" class="city_link" onclick="loadReport()">Chicago</a></li>
-                    <li><a href="#" class="city_link" onclick="loadReport()">Dallas</a></li>
+                    <li><a href="#" class="city_link" onclick="loadReport(this.id)" id="91501">Burbank</a></li>
+                    <li><a href="#" class="city_link" onclick="loadReport(this.id)" id="60601">Chicago</a></li>
+                    <li><a href="#" class="city_link" onclick="loadReport(this.id)" id="75201">Dallas</a></li>
                 </ul>
             </div>
             <!-- End Nav Bar -->
@@ -96,6 +95,8 @@
         </div>
     </div>
     <!-- End Container -->
+    <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </body>
 
 </html>
