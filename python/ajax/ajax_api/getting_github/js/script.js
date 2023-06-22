@@ -11,5 +11,4 @@ async function getGitHub() {
     var coderData = await response.json();
     follower_info.innerText = coderData.login + " has " + coderData.followers + " followers"
     document.getElementById("avatar").src = coderData.avatar_url;
-    return coderData;
 }
